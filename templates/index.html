@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08111f">
+    <title>PortScope</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <div class="tag">CYBERSECURITY PROJECT</div>
+
+        <h1>PortScope</h1>
+
+        <p>
+            Mobile-friendly TCP port checker for authorized
+            cybersecurity laboratory testing.
+        </p>
+    </header>
+
+    <div class="security-box">
+        <strong>Authorized Use Only</strong>
+        <p>
+            Only scan systems and networks that you own or have
+            explicit permission to test.
+        </p>
+    </div>
+
+    <section class="card">
+
+        <label for="target">
+            Target IP Address / Hostname
+        </label>
+
+        <input
+            id="target"
+            type="text"
+            placeholder="192.168.1.10"
+            autocomplete="off"
+        >
+
+        <h2>Select Ports</h2>
+
+        <div class="ports">
+
+            {% for port, service in ports.items() %}
+
+            <label class="port-item">
+
+                <input
+                    type="checkbox"
+                    value="{{ port }}"
+                    checked
+                >
+
+                <span>
+                    {{ port }} — {{ service }}
+                </span>
+
+            </label>
+
+            {% endfor %}
+
+        </div>
+
+        <button id="scanButton">
+            Start Port Scan
+        </button>
+
+        <div id="message"></div>
+
+    </section>
+
+    <section class="card">
+
+        <div class="result-header">
+            <h2>Scan Results</h2>
+            <span id="summary">
+                No scan performed
+            </span>
+        </div>
+
+        <div id="results"></div>
+
+    </section>
+
+    <footer>
+        PortScope is an educational cybersecurity project.
+        It performs basic TCP connectivity checks and is not
+        a vulnerability exploitation tool.
+    </footer>
+
+</div>
+
+<script src="/static/app.js"></script>
+
+</body>
+</html>
