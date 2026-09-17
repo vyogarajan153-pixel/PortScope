@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PortScope</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main>
+    <h1>PortScope</h1>
+    <p class="subtitle">A safe, local-only port scanner for private / loopback / link-local addresses.</p>
+
+    <div class="panel">
+      <label for="target">Target (IP or hostname)</label>
+      <input type="text" id="target" placeholder="127.0.0.1">
+
+      <fieldset>
+        <legend>Ports</legend>
+        <div class="port-grid">
+          {% for port, service in ports.items() %}
+          <label class="port-item">
+            <input type="checkbox" value="{{ port }}" checked>
+            {{ port }} — {{ service }}
+          </label>
+          {% endfor %}
+        </div>
+      </fieldset>
+
+      <button id="scanButton">Start Port Scan</button>
+      <p id="message"></p>
+      <p id="summary"></p>
+      <div id="results"></div>
+    </div>
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

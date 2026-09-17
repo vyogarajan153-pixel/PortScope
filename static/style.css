@@ -1,0 +1,16 @@
+body { font-family: system-ui, sans-serif; background: #0f1115; color: #e6e6e6; margin: 0; }
+main { max-width: 640px; margin: 3rem auto; padding: 2rem; background: #171a21; border-radius: 12px; }
+h1 { margin-top: 0; }
+.subtitle { color: #9aa0a6; }
+.panel { display: flex; flex-direction: column; gap: 1rem; }
+input[type="text"] { padding: .6rem; border-radius: 6px; border: 1px solid #333; background: #0f1115; color: #fff; }
+fieldset { border: 1px solid #333; border-radius: 8px; }
+.port-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .4rem; }
+.port-item { font-size: .9rem; }
+button { padding: .7rem; border-radius: 6px; border: none; background: #3b82f6; color: #fff; cursor: pointer; }
+button:disabled { opacity: .6; cursor: default; }
+.error { color: #f87171; }
+#results { display: flex; flex-direction: column; gap: .4rem; }
+.result { display: flex; justify-content: space-between; padding: .4rem .6rem; background: #1f2430; border-radius: 6px; }
+.open { color: #4ade80; font-weight: bold; }
+.closed { color: #9aa0a6; }
