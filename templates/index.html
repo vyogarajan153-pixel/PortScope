@@ -1,38 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>PortScope</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08111f">
+    <title>PortScope</title>
+    <link rel="stylesheet" href="/static/style.css">
 </head>
+
 <body>
-  <main>
-    <h1>PortScope</h1>
-    <p class="subtitle">A safe, local-only port scanner for private / loopback / link-local addresses.</p>
 
-    <div class="panel">
-      <label for="target">Target (IP or hostname)</label>
-      <input type="text" id="target" placeholder="127.0.0.1">
+<div class="container">
 
-      <fieldset>
-        <legend>Ports</legend>
-        <div class="port-grid">
-          {% for port, service in ports.items() %}
-          <label class="port-item">
-            <input type="checkbox" value="{{ port }}" checked>
-            {{ port }} — {{ service }}
-          </label>
-          {% endfor %}
-        </div>
-      </fieldset>
+    <header>
+        <div class="tag">CYBERSECURITY PROJECT</div>
 
-      <button id="scanButton">Start Port Scan</button>
-      <p id="message"></p>
-      <p id="summary"></p>
-      <div id="results"></div>
+        <h1>PortScope</h1>
+
+        <p>
+            Mobile-friendly TCP port checker for authorized
+            cybersecurity laboratory testing.
+        </p>
+    </header>
+
+    <div class="security-box">
+        <strong>Authorized Use Only</strong>
+        <p>
+            Only scan systems and networks that you own or have
+            explicit permission to test.
+        </p>
     </div>
-  </main>
 
-  <script src="{{ url_for('static', filename='app.js') }}"></script>
+    <section class="card">
+
+        <label for="target">
+            Target IP Address / Hostname
+        </label>
+
+        <input
+            id="target"
+            type="text"
+            placeholder="192.168.1.10"
+            autocomplete="off"
+        >
+
+        <h2>Select Ports</h2>
+
+        <div class="ports">
+
+            {% for port, service in ports.items() %}
+
+            <label class="port-item">
+
+                <input
+                    type="checkbox"
+                    value="{{ port }}"
+                    checked
+                >
+
+                <span>
+                    {{ port }} — {{ service }}
+                </span>
+
+            </label>
+
+            {% endfor %}
+
+        </div>
+
+        <button id="scanButton">
+            Start Port Scan
+        </button>
+
+        <div id="message"></div>
+
+    </section>
+
+    <section class="card">
+
+        <div class="result-header">
+            <h2>Scan Results</h2>
+            <span id="summary">
+                No scan performed
+            </span>
+        </div>
+
+        <div id="results"></div>
+
+    </section>
+
+    <footer>
+        PortScope is an educational cybersecurity project.
+        It performs basic TCP connectivity checks and is not
+        a vulnerability exploitation tool.
+    </footer>
+
+</div>
+
+<script src="/static/app.js"></script>
+
 </body>
 </html>
